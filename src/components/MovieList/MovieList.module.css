@@ -1,0 +1,22 @@
+.list {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  row-gap: 30px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.img {
+  width: 320px;
+  max-height: 450px;
+}
+
+.title {
+  text-align: center;
+  font-size: 18px;
+}
