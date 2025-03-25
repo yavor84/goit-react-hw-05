@@ -42,7 +42,7 @@ function MovieDetailsPage() {
     <div className={css.container}>
       {!isLoading && (
         <Link to={backLinkRef.current} className={css.backLinkRef}>
-          ← Go back
+          ⬅ Go back
         </Link>
       )}
       {isLoading && <Loader />}
