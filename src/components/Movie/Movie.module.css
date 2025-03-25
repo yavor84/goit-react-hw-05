@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  margin-top: 30px;
+  gap: 20px;
+  max-width: 1710px;
+  font-size: 18px;
+}
+
+@media (max-width: 767px) {
+  .container {
+    flex-wrap: wrap;
+    font-size: 18px;
+  }
+}
+
+.description {
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+.info {
+  word-wrap: break-word;
+}
+
+.span {
+  font-weight: 700;
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
+.img {
+  flex-shrink: 1;
+}

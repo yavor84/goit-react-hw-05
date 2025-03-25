@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { fetchMovieDetails } from "../../tmdbapi";
 import {
   Link,
@@ -10,6 +10,7 @@ import {
 import Movie from "../../components/Movie/Movie";
 import Loader from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import css from "./MovieDetailsPage.module.css";
 
 function MovieDetailsPage() {
   const [movie, setMovie] = useState(null);
@@ -38,20 +39,30 @@ function MovieDetailsPage() {
   }, [movieId]);
 
   return (
-    <div>
-      <Link to={backLinkRef.current}>&#129092; Go back</Link>
+    <div className={css.container}>
+      {!isLoading && (
+        <Link to={backLinkRef.current} className={css.backLinkRef}>
+          &#129092; Go back
+        </Link>
+      )}
       {isLoading && <Loader />}
       {error && <ErrorMessage />}
       {movie && <Movie movie={movie} />}
-      <ul>
+      <ul className={css.list}>
         <li>
-          <NavLink to="cast">Cast</NavLink>
+          <NavLink className={css.navLink} to="cast">
+            Cast
+          </NavLink>
         </li>
         <li>
-          <NavLink to="reviews">Reviews</NavLink>
+          <NavLink className={css.navLink} to="reviews">
+            Reviews
+          </NavLink>
         </li>
       </ul>
-      <Outlet />
+      <Suspense fallback={<p>Loading page...</p>}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 }

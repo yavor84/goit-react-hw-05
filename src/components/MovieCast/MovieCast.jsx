@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { fetchMovieCredits } from "../../tmdbapi";
 import Loader from "../Loader/Loader";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import css from "./MovieCast.module.css";
 
 const defaultImg =
   "https://dl-media.viber.com/10/share/2/long/vibes/icon/image/0x0/95e0/5688fdffb84ff8bed4240bcf3ec5ac81ce591d9fa9558a3a968c630eaba195e0.jpg";
@@ -34,11 +35,12 @@ function MovieCast() {
     <div>
       {isLoading && <Loader />}
       {error && <ErrorMessage />}
-      <ul>
+      <ul className={css.list}>
         {cast.length ? (
           cast.map((el) => (
-            <li key={el.id}>
+            <li key={el.id} className={css.item}>
               <img
+                className={css.img}
                 src={
                   el.profile_path
                     ? `https://image.tmdb.org/t/p/w500${el.profile_path}`
@@ -46,12 +48,13 @@ function MovieCast() {
                 }
                 alt={el.name}
               />
-              <p>{el.name}</p>
+              <p className={css.name}>{el.name}</p>
+
               <p>({el.character})</p>
             </li>
           ))
         ) : (
-          <p>No cast for this movie</p>
+          <p className={css.noCast}>No cast for this movie</p>
         )}
       </ul>
     </div>

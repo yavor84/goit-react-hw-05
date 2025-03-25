@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { fetchMovieReviews } from "../../tmdbapi";
 import Loader from "../Loader/Loader";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import css from "./MovieReviews.module.css";
 
 function MovieReviews() {
   const { movieId } = useParams();
@@ -31,16 +32,16 @@ function MovieReviews() {
     <div>
       {isLoading && <Loader />}
       {error && <ErrorMessage />}
-      <ul>
+      <ul className={css.listReviews}>
         {reviews.length ? (
           reviews.map((review) => (
-            <li key={review.id}>
-              <p>{review.author}</p>
+            <li key={review.id} className={css.item}>
+              <p className={css.name}>👤{review.author}</p>
               <p>{review.content}</p>
             </li>
           ))
         ) : (
-          <p>No review for this movie</p>
+          <p className={css.noRewiews}>No reviews for this movie</p>
         )}
       </ul>
     </div>

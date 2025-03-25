@@ -3,6 +3,7 @@ import { fetchTrandingMov } from "../../tmdbapi";
 import MovieList from "../../components/MovieList/MovieList";
 import Loader from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import css from "./HomePage.module.css";
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
@@ -27,7 +28,7 @@ const HomePage = () => {
 
   return (
     <div>
-      <h1>Trending today</h1>
+      <h1 className={css.title}>Trending today</h1>
       {isLoading && <Loader />}
       {error && <ErrorMessage />}
       {movies.length > 0 && <MovieList movies={movies} />}

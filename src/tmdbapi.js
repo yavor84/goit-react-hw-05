@@ -35,7 +35,7 @@ export const fetchMovieCredits = async (movieId) => {
 export const fetchSearchMovies = async (query) => {
   const response = await axios.get("/search/movie", {
     ...options,
-    params: { query },
+    params: { query, include_adult: false, language: "en-US" },
   });
   return response.data;
 };

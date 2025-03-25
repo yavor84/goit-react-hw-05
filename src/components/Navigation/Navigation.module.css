@@ -1,5 +1,12 @@
 .header {
-  border-bottom: 2px solid #666;
+  padding: 15px;
+  position: fixed;
+  z-index: 1000;
+  background-color: #2d3047;
+  width: 100%;
+  height: auto;
+  top: 0;
+  left: 0;
 }
 
 .list {
@@ -10,12 +17,17 @@
 .link {
   display: block;
   padding-bottom: 10px;
-  font-size: 18px;
-  color: rgb(128, 124, 124);
+  font-size: 25px;
+  color: #93b7be;
+  transition: color 0.3s ease;
+}
+
+.link:hover {
+  color: #a799b7;
 }
 
 .active {
-  font-weight: 700;
-  color: dodgerblue;
+  font-weight: 800;
+  color: #a799b7;
   text-decoration: underline;
 }

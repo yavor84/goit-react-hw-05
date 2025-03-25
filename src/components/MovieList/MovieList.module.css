@@ -1,6 +1,8 @@
 .list {
   margin-top: 20px;
+  padding: 12px;
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 15px;
   row-gap: 30px;
@@ -11,12 +13,29 @@
   justify-content: center;
 }
 
+.item {
+  transition: box-shadow 0.3s ease;
+  max-width: 320px;
+}
+
+.item:hover img {
+  transform: scale(1.01);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
 .img {
+  position: relative;
   width: 320px;
-  max-height: 450px;
+  height: 450px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
 .title {
+  margin-top: 8px;
   text-align: center;
-  font-size: 18px;
+  font-size: 20px;
+  color: #2d3047;
+  word-wrap: break-word; /* Додаємо цю властивість для переносу тексту */
+  white-space: normal;
 }

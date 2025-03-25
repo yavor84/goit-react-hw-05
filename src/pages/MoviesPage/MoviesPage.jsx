@@ -4,6 +4,7 @@ import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import MovieList from "../../components/MovieList/MovieList";
 import { useSearchParams } from "react-router-dom";
 import { fetchSearchMovies } from "../../tmdbapi";
+import css from "./MoviesPage.module.css";
 
 const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
@@ -45,10 +46,19 @@ const MoviesPage = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input type="text" name="search" autoComplete="off" autoFocus />
-        <button type="submit">Search</button>
+    <div className={css.formContainer}>
+      <h1 className={css.title}>Search movies</h1>
+      <form onSubmit={handleSubmit} className={css.form}>
+        <input
+          className={css.input}
+          type="text"
+          name="search"
+          autoComplete="off"
+          autoFocus
+        />
+        <button className={css.button} type="submit">
+          Search
+        </button>
       </form>
       {isLoading && <Loader />}
       {error && <ErrorMessage />}
