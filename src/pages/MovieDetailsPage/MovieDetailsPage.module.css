@@ -5,6 +5,9 @@
 
 .backLinkRef,
 .navLink {
+  display: flex;
+  align-items: center;
+  width: 120px;
   border-radius: 6px;
   background-color: #93b7be;
   padding: 8px 12px;

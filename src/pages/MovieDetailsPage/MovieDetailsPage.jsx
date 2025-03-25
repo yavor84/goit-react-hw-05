@@ -21,6 +21,16 @@ function MovieDetailsPage() {
   const location = useLocation();
   const backLinkRef = useRef(location.state ?? "/movies");
 
+  const handleScroll = () => {
+    setTimeout(() => {
+      window.scrollBy({
+        top: 500,
+        left: 0,
+        behavior: "smooth",
+      });
+    }, 300);
+  };
+
   useEffect(() => {
     async function getMovie() {
       if (!movieId) return;
@@ -42,7 +52,7 @@ function MovieDetailsPage() {
     <div className={css.container}>
       {!isLoading && (
         <Link to={backLinkRef.current} className={css.backLinkRef}>
-          ⬅ Go back
+          <span>&#8592;</span>Go back
         </Link>
       )}
       {isLoading && <Loader />}
@@ -50,12 +60,12 @@ function MovieDetailsPage() {
       {movie && <Movie movie={movie} />}
       <ul className={css.list}>
         <li>
-          <NavLink className={css.navLink} to="cast">
+          <NavLink className={css.navLink} to="cast" onClick={handleScroll}>
             Cast
           </NavLink>
         </li>
         <li>
-          <NavLink className={css.navLink} to="reviews">
+          <NavLink className={css.navLink} to="reviews" onClick={handleScroll}>
             Reviews
           </NavLink>
         </li>
